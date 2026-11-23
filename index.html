@@ -37,12 +37,13 @@
 
   /* Three rows, two equal columns. Paintings alternate sides and sit flush
      against the screen edge, so each painting's corner meets the next one
-     at the center line. */
+     at the center line. Each row is as tall as its painting; the text is
+     centered beside it. */
   .row { display: grid; grid-template-columns: 1fr 1fr; }
 
   .text {
     display: flex; flex-direction: column; justify-content: center; gap: 16px;
-    padding: var(--pad-y, 28px) var(--gutter-inner) var(--pad-y, 28px) var(--gutter-outer);
+    padding: 28px var(--gutter-inner) 28px var(--gutter-outer);
   }
   .text--right { padding-left: var(--gutter-inner); padding-right: var(--gutter-outer); }
   .text p { margin: 0; text-wrap: pretty; }
@@ -51,14 +52,6 @@
   .pic { margin: 0; align-self: start; }
   .pic img { display: block; width: 100%; height: auto; }
   .pic figcaption { padding: 8px var(--gutter-outer) 20px var(--gutter-inner); font-size: 17px; font-style: italic; }
-
-  /* A pinned painting stays at the top of the screen until the next row's
-     painting rises to meet its corner, then the two scroll away together.
-     The extra vertical padding on the text beside it (--pad-y) is what makes
-     the row taller than the painting and gives the pin room to travel. */
-  .pic--pin { position: sticky; top: 0; }
-  .row--one { --pad-y: clamp(48px, 8vw, 110px); }
-  .row--two { --pad-y: clamp(56px, 11vw, 150px); }
 
   .links { display: flex; flex-wrap: wrap; gap: 0 28px; margin-top: -6px; }
   .links a {
@@ -70,12 +63,10 @@
   .links a:nth-child(3) { text-decoration-color: var(--pink); }
   .links a:nth-child(4) { text-decoration-color: var(--green); }
 
-  /* Phone: one column, each painting above or below its own text, no pinning. */
+  /* Phone: one column, each painting above or below its own text. */
   @media (max-width: 760px) {
     .row { grid-template-columns: 1fr; }
-    .row--one, .row--two { --pad-y: 28px; }
     .text, .text--right { padding: 28px 20px; }
-    .pic--pin { position: static; }
     .pic figcaption { padding: 8px 20px 20px; }
   }
 </style>
@@ -83,19 +74,19 @@
 <body>
 <main>
 
-  <section class="row row--one">
+  <section class="row">
     <div class="text">
       <h1>Hi, I’m Kyle!</h1>
       <p>I study math, computer science, and creative writing at Stanford University.</p>
       <p>I do research on decentralized multi-agent systems at the Stanford AI Lab under Azalia Mirhoseini. Before that, I worked on AI agents at Aven, built <a href="https://web.archive.org/web/20251007235224/https://www.paradigmai.com/blog/evals">evaluations</a> at YC-backed Paradigm, and red-teamed frontier models at Scale AI. I was also a <a href="https://research.contrary.com/company/suno">Research Fellow</a> at Contrary and a Summer Fellow at Dorm Room Fund.</p>
     </div>
-    <figure class="pic pic--pin">
+    <figure class="pic">
       <img src="images/wall.jpg" width="1400" height="933" alt="Oil painting of Kyle leaning in to paint a large blue face on a wall covered in doodled stars, hearts, and spirals">
     </figure>
   </section>
 
-  <section class="row row--two">
-    <figure class="pic pic--pin">
+  <section class="row">
+    <figure class="pic">
       <img src="images/piano.jpg" width="1400" height="788" loading="lazy" alt="Oil painting of a grand piano seen from the keyboard, with the lid open and the wooden frame visible inside">
     </figure>
     <div class="text text--right">
@@ -106,7 +97,7 @@
   <section class="row">
     <div class="text">
       <p>In my free time, I love chasing sunsets, ranking new restaurants on Beli, and cooking for my friends and family. I’m on a quest to find the best carbonara in the Bay Area.</p>
-      <p>In a past life, I wrote and published five novels. There’s a <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=13247">minor planet</a> named after me.</p>
+      <p>A very long time ago, I wrote and published five novels. There’s a <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=13247">minor planet</a> named after me.</p>
       <nav class="links" aria-label="Contact">
         <a href="https://github.com/KTianshi">github</a>
         <a href="https://www.linkedin.com/in/kyle-tianshi/">linkedin</a>
