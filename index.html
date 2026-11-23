@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyle Tianshi</title>
+<meta name="description" content="Kyle Tianshi studies math, computer science, and creative writing at Stanford and does research on multi-agent systems at the Stanford AI Lab.">
+<meta property="og:title" content="Kyle Tianshi">
+<meta property="og:description" content="Math, computer science, and creative writing at Stanford.">
+<meta property="og:image" content="images/wall.jpg">
+<meta name="theme-color" content="#9C8878">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  :root {
+    --ground: #9C8878;  /* wall color sampled from the first painting */
+    --ink: #1E1618;
+    --blue: #3F4B9C;    /* link underline colors, taken from the wall doodles */
+    --coral: #A63F2B;
+    --pink: #9C3552;
+    --green: #4C6A2A;
+    --gutter-outer: clamp(20px, 5vw, 72px);  /* text to screen edge */
+    --gutter-inner: clamp(20px, 4vw, 48px);  /* text to center line */
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 400 20px/1.55 'EB Garamond', Georgia, 'Times New Roman', serif;
+  }
+  a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { opacity: .65; }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  /* Three rows, two equal columns. Paintings alternate sides and sit flush
+     against the screen edge, so each painting's corner meets the next one
+     at the center line. */
+  .row { display: grid; grid-template-columns: 1fr 1fr; }
+
+  .text {
+    display: flex; flex-direction: column; justify-content: center; gap: 16px;
+    padding: var(--pad-y, 28px) var(--gutter-inner) var(--pad-y, 28px) var(--gutter-outer);
+  }
+  .text--right { padding-left: var(--gutter-inner); padding-right: var(--gutter-outer); }
+  .text p { margin: 0; text-wrap: pretty; }
+  h1 { margin: 0; font-size: clamp(32px, 3.4vw, 44px); font-weight: 500; line-height: 1.1; }
+
+  .pic { margin: 0; align-self: start; }
+  .pic img { display: block; width: 100%; height: auto; }
+  .pic figcaption { padding: 8px var(--gutter-outer) 20px var(--gutter-inner); font-size: 17px; font-style: italic; }
+
+  /* A pinned painting stays at the top of the screen until the next row's
+     painting rises to meet its corner, then the two scroll away together.
+     The extra vertical padding on the text beside it (--pad-y) is what makes
+     the row taller than the painting and gives the pin room to travel. */
+  .pic--pin { position: sticky; top: 0; }
+  .row--one { --pad-y: clamp(48px, 8vw, 110px); }
+  .row--two { --pad-y: clamp(56px, 11vw, 150px); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 0 28px; margin-top: -6px; }
+  .links a {
+    display: inline-block; padding: 8px 0;
+    text-decoration: underline wavy; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+  }
+  .links a:nth-child(1) { text-decoration-color: var(--blue); }
+  .links a:nth-child(2) { text-decoration-color: var(--coral); }
+  .links a:nth-child(3) { text-decoration-color: var(--pink); }
+  .links a:nth-child(4) { text-decoration-color: var(--green); }
+
+  /* Phone: one column, each painting above or below its own text, no pinning. */
+  @media (max-width: 760px) {
+    .row { grid-template-columns: 1fr; }
+    .row--one, .row--two { --pad-y: 28px; }
+    .text, .text--right { padding: 28px 20px; }
+    .pic--pin { position: static; }
+    .pic figcaption { padding: 8px 20px 20px; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <section class="row row--one">
+    <div class="text">
+      <h1>Hi, I’m Kyle!</h1>
+      <p>I study math, computer science, and creative writing at Stanford University.</p>
+      <p>I do research on decentralized multi-agent systems at the Stanford AI Lab under Azalia Mirhoseini. Before that, I worked on AI agents at Aven, built <a href="https://web.archive.org/web/20251007235224/https://www.paradigmai.com/blog/evals">evaluations</a> at YC-backed Paradigm, and red-teamed frontier models at Scale AI. I was also a <a href="https://research.contrary.com/company/suno">Research Fellow</a> at Contrary and a Summer Fellow at Dorm Room Fund.</p>
+    </div>
+    <figure class="pic pic--pin">
+      <img src="images/wall.jpg" width="1400" height="933" alt="Oil painting of Kyle leaning in to paint a large blue face on a wall covered in doodled stars, hearts, and spirals">
+    </figure>
+  </section>
+
+  <section class="row row--two">
+    <figure class="pic pic--pin">
+      <img src="images/piano.jpg" width="1400" height="788" loading="lazy" alt="Oil painting of a grand piano seen from the keyboard, with the lid open and the wooden frame visible inside">
+    </figure>
+    <div class="text text--right">
+      <p>I enjoy creative writing and have won national awards for my <a href="https://www.artandwriting.org/gallery/641634">flash fiction</a> and <a href="https://www.artandwriting.org/gallery/30ccfec6-018b-5ca2-ab05-8d406416d0fd">poetry</a>. I play piano for the <a href="https://youtu.be/iCRsce_qObI">Stanford Symphony Orchestra</a> and love improvising and composing (I co-wrote a <a href="https://youtu.be/QhcYQAmkhT8">paraphrase for two organs</a> on John Adams’ Hallelujah Junction). I directed and scored a <a href="https://youtu.be/suRUcyknPbE">documentary</a> about my piano teacher, which won a YoungArts award.</p>
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="text">
+      <p>In my free time, I love chasing sunsets, ranking new restaurants on Beli, and cooking for my friends and family. I’m on a quest to find the best carbonara in the Bay Area.</p>
+      <p>In a past life, I wrote and published five novels. There’s a <a href="https://ssd.jpl.nasa.gov/tools/sbdb_lookup.html#/?sstr=13247">minor planet</a> named after me.</p>
+      <nav class="links" aria-label="Contact">
+        <a href="mailto:ktianshi@stanford.edu">email</a>
+        <a href="https://github.com/KTianshi">github</a>
+        <a href="https://www.linkedin.com/in/kyle-tianshi/">linkedin</a>
+        <a href="https://x.com/KTianshi">x</a>
+      </nav>
+    </div>
+    <figure class="pic">
+      <img src="images/flatbread.jpg" width="1600" height="1200" loading="lazy" alt="Oil painting of a candlelit table set with flatbread, anchovies with green peppers, and a small dish of dip">
+      <!-- To use the charcuterie painting instead, replace the img above with:
+      <img src="images/charcuterie.jpg" width="1400" height="1050" loading="lazy" alt="Oil painting of an appetizer spread: a nut-crusted cheese ball with crackers, prosciutto crostini with blue cheese, and a row of small canapés">
+      <figcaption>An appetizer spread I made for Thanksgiving.</figcaption>
+      -->
+    </figure>
+  </section>
+
+</main>
+</body>
+</html>
